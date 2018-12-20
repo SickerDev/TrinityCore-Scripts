@@ -96,97 +96,97 @@ public: SICKER_HELPER_NPC() : CreatureScript("SICKER_HELPER_NPC") {}
 		class SICKER_HELPER_NPCAI : public ScriptedAI {
 		public:  SICKER_HELPER_NPCAI(Creature* creature) : ScriptedAI(creature) { }
 
-				 void PrepareMenu(Player* player, Creature* creature, uint32 menuId) {
-					 player->PlayerTalkClass->ClearMenus();
-					 for (uint8 i = 0; i < (sizeof(FullForm) / sizeof(*FullForm)); i++) {
-						 if (FullForm[i].PARENT == menuId)
-							 AddGossipItemFor(player, FullForm[i].ICON, FullForm[i].NAME, GOSSIP_SENDER_MAIN, i);
-					 }
-					 SendGossipMenuFor(player, 907, creature->GetGUID());
-				 }
-				 // Hello
-				 bool GossipHello(Player * player) override {
-					 return OnGossipHello(player, me);
-				 }
-				 // View NPC Menu
-				 bool OnGossipHello(Player * player, Creature* Sicker) {
-					 // Player tools
+			void PrepareMenu(Player* player, Creature* creature, uint32 menuId) {
+				player->PlayerTalkClass->ClearMenus();
+				for (uint8 i = 0; i < (sizeof(FullForm) / sizeof(*FullForm)); i++) {
+					if (FullForm[i].PARENT == menuId)
+						AddGossipItemFor(player, FullForm[i].ICON, FullForm[i].NAME, GOSSIP_SENDER_MAIN, i);
+				}
+				SendGossipMenuFor(player, 907, creature->GetGUID());
+			}
+			// Hello
+			bool GossipHello(Player * player) override {
+				return OnGossipHello(player, me);
+			}
+			// View NPC Menu
+			bool OnGossipHello(Player * player, Creature* Sicker) {
+				// Player tools
 
-					 AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Spell_Holy_DivineIllumination:30|t  Heal me...", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
-					 AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Spell_Nature_GiftoftheWild:30|t Buffs", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
-					 AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Ability_hunter_pathfinding:30|t |cffFF0000 V.I.P|r buffs", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 3);
+				AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Spell_Holy_DivineIllumination:30|t  Heal me...", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
+				AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Spell_Nature_GiftoftheWild:30|t Buffs", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
+				AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Ability_hunter_pathfinding:30|t |cffFF0000 V.I.P|r buffs", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 3);
 
-					 AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Achievement_Level_60:30|t Set my level 60", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 4);
-					 AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Achievement_Level_70:30|t Set my level 70", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 5);
-					 AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Achievement_Level_80:30|t Set my level 80", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 6);
+				AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Achievement_Level_60:30|t Set my level 60", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 4);
+				AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Achievement_Level_70:30|t Set my level 70", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 5);
+				AddGossipItemFor(player, GOSSIP_ICON_DOT, "|TInterface\\Icons\\Achievement_Level_80:30|t Set my level 80", GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 6);
 
-					 AddGossipItemFor(player, GOSSIP_ICON_CHAT, "|cffFF0000|TInterface\\icons\\achievement_reputation_01:30 |t  Nevermind...|r", GOSSIP_SENDER_MAIN, 0);
-					 player->PlayerTalkClass->SendGossipMenu(907, Sicker->GetGUID());
-					 return true;
-				 }
+				AddGossipItemFor(player, GOSSIP_ICON_CHAT, "|cffFF0000|TInterface\\icons\\achievement_reputation_01:30 |t  Nevermind...|r", GOSSIP_SENDER_MAIN, 0);
+				player->PlayerTalkClass->SendGossipMenu(907, Sicker->GetGUID());
+				return true;
+			}
 
-				 bool GossipSelect(Player* player, uint32, uint32 OptionID) override {
-					 uint32 UI_Sender = player->PlayerTalkClass->GetGossipOptionSender(OptionID);
-					 uint32 UI_Action = player->PlayerTalkClass->GetGossipOptionAction(OptionID);
-					 return OnGossipSelect(player, me, UI_Sender, UI_Action);
-				 }
+			bool GossipSelect(Player* player, uint32, uint32 OptionID) override {
+				uint32 UI_Sender = player->PlayerTalkClass->GetGossipOptionSender(OptionID);
+				uint32 UI_Action = player->PlayerTalkClass->GetGossipOptionAction(OptionID);
+				return OnGossipSelect(player, me, UI_Sender, UI_Action);
+			}
 
-				 bool OnGossipSelect(Player* player, Creature* Sicker, uint32 SICKER_SENDER, uint32 SICKER_ACTION) {
-					 player->PlayerTalkClass->ClearMenus();
-					 switch (SICKER_ACTION) {
-					 case 0:
-						 player->PlayerTalkClass->SendCloseGossip();
-						 return false;
-					 case GOSSIP_ACTION_INFO_DEF + 1:
-						 player->PlayerTalkClass->ClearMenus();
-						 player->CastSpell(player, 69693, TRIGGERED_IGNORE_POWER_AND_REAGENT_COST);
-						 player->PlayerTalkClass->SendCloseGossip();
-						 return false;
-					 case GOSSIP_ACTION_INFO_DEF + 2:
-						 player->PlayerTalkClass->ClearMenus();
-						 PrepareMenu(player, Sicker, 2);
-						 return false;
-					 case GOSSIP_ACTION_INFO_DEF + 3:
-						 player->PlayerTalkClass->ClearMenus();
-						 PrepareMenu(player, Sicker, 3);
-						 return false;
-					 case GOSSIP_ACTION_INFO_DEF + 4:
-						 player->GiveLevel(60);
-						 player->InitTalentForLevel();
-						 player->SetUInt32Value(PLAYER_XP, 0);
-						 ChatHandler(player->GetSession()).PSendSysMessage("Now you on 60 level.");
-						 player->SetFlag(PLAYER_FLAGS, PLAYER_FLAGS_NO_XP_GAIN);
-						 player->PlayerTalkClass->SendCloseGossip();
-						 return false;
-					 case GOSSIP_ACTION_INFO_DEF + 5:
-						 player->GiveLevel(70);
-						 player->InitTalentForLevel();
-						 player->SetUInt32Value(PLAYER_XP, 0);
-						 ChatHandler(player->GetSession()).PSendSysMessage("Now you on 70 level.");
-						 player->SetFlag(PLAYER_FLAGS, PLAYER_FLAGS_NO_XP_GAIN);
-						 player->PlayerTalkClass->SendCloseGossip();
-						 return false;
-					 case GOSSIP_ACTION_INFO_DEF + 6:
-						 player->GiveLevel(80);
-						 player->InitTalentForLevel();
-						 player->SetUInt32Value(PLAYER_XP, 0);
-						 ChatHandler(player->GetSession()).PSendSysMessage("Now you on 80 level.");
-						 player->SetFlag(PLAYER_FLAGS, PLAYER_FLAGS_NO_XP_GAIN);
-						 player->PlayerTalkClass->SendCloseGossip();
-						 return false;
-					 }
+			bool OnGossipSelect(Player* player, Creature* Sicker, uint32 SICKER_SENDER, uint32 SICKER_ACTION) {
+				player->PlayerTalkClass->ClearMenus();
+				switch (SICKER_ACTION) {
+				case 0:
+					player->PlayerTalkClass->SendCloseGossip();
+					return false;
+				case GOSSIP_ACTION_INFO_DEF + 1:
+					player->PlayerTalkClass->ClearMenus();
+					player->CastSpell(player, 69693, TRIGGERED_IGNORE_POWER_AND_REAGENT_COST);
+					player->PlayerTalkClass->SendCloseGossip();
+					return false;
+				case GOSSIP_ACTION_INFO_DEF + 2:
+					player->PlayerTalkClass->ClearMenus();
+					PrepareMenu(player, Sicker, 2);
+					return false;
+				case GOSSIP_ACTION_INFO_DEF + 3:
+					player->PlayerTalkClass->ClearMenus();
+					PrepareMenu(player, Sicker, 3);
+					return false;
+				case GOSSIP_ACTION_INFO_DEF + 4:
+					player->GiveLevel(60);
+					player->InitTalentForLevel();
+					player->SetUInt32Value(PLAYER_XP, 0);
+					ChatHandler(player->GetSession()).PSendSysMessage("Now you on 60 level.");
+					player->SetFlag(PLAYER_FLAGS, PLAYER_FLAGS_NO_XP_GAIN);
+					player->PlayerTalkClass->SendCloseGossip();
+					return false;
+				case GOSSIP_ACTION_INFO_DEF + 5:
+					player->GiveLevel(70);
+					player->InitTalentForLevel();
+					player->SetUInt32Value(PLAYER_XP, 0);
+					ChatHandler(player->GetSession()).PSendSysMessage("Now you on 70 level.");
+					player->SetFlag(PLAYER_FLAGS, PLAYER_FLAGS_NO_XP_GAIN);
+					player->PlayerTalkClass->SendCloseGossip();
+					return false;
+				case GOSSIP_ACTION_INFO_DEF + 6:
+					player->GiveLevel(80);
+					player->InitTalentForLevel();
+					player->SetUInt32Value(PLAYER_XP, 0);
+					ChatHandler(player->GetSession()).PSendSysMessage("Now you on 80 level.");
+					player->SetFlag(PLAYER_FLAGS, PLAYER_FLAGS_NO_XP_GAIN);
+					player->PlayerTalkClass->SendCloseGossip();
+					return false;
+				}
 
 
-					 uint32 menuData = FullForm[SICKER_ACTION].CHILD;
+				uint32 menuData = FullForm[SICKER_ACTION].CHILD;
 
-					 if (menuData == 0) {
-						 player->AddAura(FullForm[SICKER_ACTION].ID, player);
-						 menuData = FullForm[SICKER_ACTION].PARENT;
-					 }
+				if (menuData == 0) {
+					player->AddAura(FullForm[SICKER_ACTION].ID, player);
+					menuData = FullForm[SICKER_ACTION].PARENT;
+				}
 
-					 PrepareMenu(player, Sicker, menuData);
-					 return true;
-				 }
+				PrepareMenu(player, Sicker, menuData);
+				return true;
+			}
 		};
 		CreatureAI* GetAI(Creature* creature) const override {
 			return new SICKER_HELPER_NPCAI(creature);
