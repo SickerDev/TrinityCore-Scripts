@@ -5,6 +5,7 @@
 	 - Skills
 	
 	Version: 1.0
+	Status: Compiled and Tested
 
 	(C) 2018 Developed by Sicker
 	All rights reserved.
