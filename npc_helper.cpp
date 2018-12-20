@@ -18,7 +18,7 @@
 SQL QUERY:
 DO NOT CHANGE!
 INSERT INTO `creature_template` (`entry`, `modelid1`, `name`, `subname`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `scale`, `unit_class`, `AIName`, `ScriptName`)
-VALUES ('190050', '1542', 'Helper', 'Player Tools', '80', '80', '0', '35', '65', '1.0', '1.8', '1', '1', 'SmartAI', 'SICKER_HELPER_NPC');
+VALUES ('190050', '1542', 'Helper', 'Player Tools', '80', '80', '0', '35', '65', '1.0', '1.8', '1', '1', 'SmartAI', 'HELPER_NPC');
 
 */
 
@@ -40,7 +40,7 @@ VALUES ('190050', '1542', 'Helper', 'Player Tools', '80', '80', '0', '35', '65',
 
 using namespace std;
 
-struct SICKERMENU {
+struct NPCMENU {
 	uint32 PARENT;
 	uint32 CHILD;
 	uint32 ICON;
@@ -92,10 +92,10 @@ SICKERMENU FullForm[] = {
 
 };
 
-class SICKER_HELPER_NPC : public CreatureScript {
-public: SICKER_HELPER_NPC() : CreatureScript("SICKER_HELPER_NPC") {}
-		class SICKER_HELPER_NPCAI : public ScriptedAI {
-		public:  SICKER_HELPER_NPCAI(Creature* creature) : ScriptedAI(creature) { }
+class HELPER_NPC : public CreatureScript {
+public: HELPER_NPC() : CreatureScript("HELPER_NPC") {}
+		class HELPER_NPCAI : public ScriptedAI {
+		public:  HELPER_NPCAI(Creature* creature) : ScriptedAI(creature) { }
 
 			void PrepareMenu(Player* player, Creature* creature, uint32 menuId) {
 				player->PlayerTalkClass->ClearMenus();
@@ -190,10 +190,10 @@ public: SICKER_HELPER_NPC() : CreatureScript("SICKER_HELPER_NPC") {}
 			}
 		};
 		CreatureAI* GetAI(Creature* creature) const override {
-			return new SICKER_HELPER_NPCAI(creature);
+			return new HELPER_NPCAI(creature);
 		}
 };
 
-void AddSC_SICKER_HELPER_NPC() {
-	new SICKER_HELPER_NPC();
+void AddSC_HELPER_NPC() {
+	new HELPER_NPC();
 }

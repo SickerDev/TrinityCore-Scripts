@@ -17,7 +17,7 @@
 SQL QUERY:
 DO NOT CHANGE!
 INSERT INTO `creature_template` (`entry`, `modelid1`, `name`, `subname`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `scale`, `unit_class`, `AIName`, `ScriptName`)
-VALUES ('190051', '1542', 'Sicker', 'World Trainer', '80', '80', '0', '35', '65', '1.0', '1.8', '0.5', '1', 'SmartAI', 'SICKER_TRAINER_NPC');
+VALUES ('190051', '1542', 'Sicker', 'World Trainer', '80', '80', '0', '35', '65', '1.0', '1.8', '0.5', '1', 'SmartAI', 'TRAINER_NPC');
 
 */
 
@@ -36,10 +36,10 @@ VALUES ('190051', '1542', 'Sicker', 'World Trainer', '80', '80', '0', '35', '65'
 
 
 
-class SICKER_TRAINER_NPC : public CreatureScript {
-public: SICKER_TRAINER_NPC() : CreatureScript("SICKER_TRAINER_NPC") {}
-		class SICKER_TRAINER_NPCAI : public ScriptedAI {
-		public:  SICKER_TRAINER_NPCAI(Creature* creature) : ScriptedAI(creature) { }
+class TRAINER_NPC : public CreatureScript {
+public: TRAINER_NPC() : CreatureScript("TRAINER_NPC") {}
+		class TRAINER_NPCAI : public ScriptedAI {
+		public:  TRAINER_NPCAI(Creature* creature) : ScriptedAI(creature) { }
 
 			bool GossipHello(Player * player) override {
 				return OnGossipHello(player, me);
@@ -208,10 +208,10 @@ public: SICKER_TRAINER_NPC() : CreatureScript("SICKER_TRAINER_NPC") {}
 			}
 		};
 		CreatureAI* GetAI(Creature* creature) const override {
-			return new SICKER_TRAINER_NPCAI(creature);
+			return new TRAINER_NPCAI(creature);
 		}
 };
 
-void AddSC_SICKER_TRAINER_NPC() {
-	new SICKER_TRAINER_NPC();
+void AddSC_TRAINER_NPC() {
+	new TRAINER_NPC();
 }

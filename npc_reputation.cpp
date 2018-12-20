@@ -3,7 +3,7 @@
 	Sicker NPC - Ambassador <Player Reputation Modifier>
 
 	Version: 1.0
-	Status: Compiled and tested.
+	Status: Compiled and tested on 335.64
 
 	(C) 2018 Developed by Sicker
 	All rights reserved.
@@ -15,7 +15,7 @@
 SQL QUERY:
 DO NOT CHANGE!
 INSERT INTO `creature_template` (`entry`, `modelid1`, `name`, `subname`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `scale`, `unit_class`, `AIName`, `ScriptName`)
-VALUES ('190052', '1542', 'Ambassador', 'Player Reputation Modifier', '80', '80', '0', '35', '65', '1.0', '1.8', '0.5', '1', 'SmartAI', 'SICKER_REPUTATION_NPC');
+VALUES ('190052', '1542', 'Ambassador', 'Player Reputation Modifier', '80', '80', '0', '35', '65', '1.0', '1.8', '0.5', '1', 'SmartAI', 'REPUTATION_NPC');
 
 */
 #include "../../../scripts/ScriptPCH.h"
@@ -47,10 +47,10 @@ SICKERREPMENU FullForm[] = {
 };
 //SetReputation(FactionEntry const* factionEntry, int32 standing)
 
-class SICKER_REPUTATION_NPC : public CreatureScript {
-public: SICKER_REPUTATION_NPC() : CreatureScript("SICKER_REPUTATION_NPC") {}
-		class SICKER_REPUTATION_NPCAI : public ScriptedAI {
-		public:  SICKER_REPUTATION_NPCAI(Creature* creature) : ScriptedAI(creature) { }
+class REPUTATION_NPC : public CreatureScript {
+public: REPUTATION_NPC() : CreatureScript("REPUTATION_NPC") {}
+		class REPUTATION_NPCAI : public ScriptedAI {
+		public:  REPUTATION_NPCAI(Creature* creature) : ScriptedAI(creature) { }
 			void PrepareMenu(Player* player, Creature* creature, uint32 menuId) {
 				player->PlayerTalkClass->ClearMenus();
 				for (uint8 i = 0; i < (sizeof(FullForm) / sizeof(*FullForm)); i++) {
@@ -103,10 +103,10 @@ public: SICKER_REPUTATION_NPC() : CreatureScript("SICKER_REPUTATION_NPC") {}
 			}
 		};
 		CreatureAI* GetAI(Creature* creature) const override {
-			return new SICKER_REPUTATION_NPCAI(creature);
+			return new REPUTATION_NPCAI(creature);
 		}
 };
 // Script not ready for use
-void AddSC_SICKER_REPUTATION_NPC() {
-	new SICKER_REPUTATION_NPC();
+void AddSC_REPUTATION_NPC() {
+	new REPUTATION_NPC();
 }
