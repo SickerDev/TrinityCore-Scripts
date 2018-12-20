@@ -1,3 +1,8 @@
 # TrinityCore-Scripts
+## ENG
 My Trinity Core Scripts, SQL, Releases
-Here i add some Core Scripts for Trinity-Core-3.3.5
+## RUS
+Мои Trinity Core Скрипты, SQL, релизы.
+
+## Only for non-comercial use!
+You can modify and edit this packages, but only for non-comercial using!
