@@ -3,6 +3,8 @@
 	Sicker NPC - Sicker <World Trainer>
 	 - Riding
 	 - Skills
+	
+	Version: 1.0
 
 	(C) 2018 Developed by Sicker
 	All rights reserved.

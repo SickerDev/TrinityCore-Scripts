@@ -4,6 +4,8 @@
 	 - Buffer
 	 - Healer
 	 - Level Changer
+	
+	Version: 1.0
 
 	(C) 2018 Developed by Sicker
 	All rights reserved.
