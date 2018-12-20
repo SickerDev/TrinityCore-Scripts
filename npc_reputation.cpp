@@ -42,8 +42,28 @@ struct SICKERREPMENU {
 	string NAME;
 };
 SICKERREPMENU FullForm[] = {
-	{ 2, 0, GOSSIP_ICON_DOT, 0, "============ Factions ============"},
-	{ 2, 0, GOSSIP_ICON_DOT, 1156, "The Ashen Verdict"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 0, "============ Factions ============"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 1156, "The Ashen Verdict"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 932, "The Aldor"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 749, "Hydraxian Waterlords"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 936, "City Shattrath"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 1090, "Kirin Tor"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 933, "Consortsium"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 1073, "The Kalu'ak"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 942, "Cenarion Expedition"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 92, "Gelkis Clan Centaur"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 93, "Magram Clan Centaur"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 576, "Magram Clan Centaur"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 1077, "Shattered Sun Offensive"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 21, "Booty Bay"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 970, "Sporeggar"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 1119, "Sons of Hoddir"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 910, "Brood of Nozdormu"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 529, "Argent dawn"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 369, "Gadgetzan"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 87, "Bloodsail Buccaneers"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 990, "The Scale of the Sands"},
+	{ 2, 0, GOSSIP_ICON_BATTLE, 1031, "Heaven's Guardians Sha'tar"},
 };
 //SetReputation(FactionEntry const* factionEntry, int32 standing)
 
