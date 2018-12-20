@@ -43,7 +43,7 @@ struct SICKERREPMENU {
 };
 SICKERREPMENU FullForm[] = {
 	{ 2, 0, GOSSIP_ICON_DOT, 0, "============ Factions ============"},
-	{ 2, 0, GOSSIP_ICON_DOT, 1156, "Aldors"},
+	{ 2, 0, GOSSIP_ICON_DOT, 1156, "The Ashen Verdict"},
 };
 //SetReputation(FactionEntry const* factionEntry, int32 standing)
 

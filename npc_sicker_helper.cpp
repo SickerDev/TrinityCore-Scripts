@@ -18,7 +18,7 @@
 SQL QUERY:
 DO NOT CHANGE!
 INSERT INTO `creature_template` (`entry`, `modelid1`, `name`, `subname`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `scale`, `unit_class`, `AIName`, `ScriptName`)
-VALUES ('190050', '1542', 'Helper', 'Player Tools', '80', '80', '0', '35', '65', '1.0', '1.8', '0.5', '1', 'SmartAI', 'SICKER_HELPER_NPC');
+VALUES ('190050', '1542', 'Helper', 'Player Tools', '80', '80', '0', '35', '65', '1.0', '1.8', '1', '1', 'SmartAI', 'SICKER_HELPER_NPC');
 
 */
 
