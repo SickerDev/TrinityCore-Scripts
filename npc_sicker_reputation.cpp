@@ -2,8 +2,8 @@
 
 	Sicker NPC - Ambassador <Player Reputation Modifier>
 
-	Version: 0.5
-	Status: Waiting test
+	Version: 1.0
+	Status: Compiled and tested.
 
 	(C) 2018 Developed by Sicker
 	All rights reserved.
